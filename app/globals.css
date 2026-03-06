@@ -2,25 +2,84 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #333333;
+  --primary: #EE2C34;
+  --primary-light: #FFF1F2;
+  --blue-hint: #2563EB;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-blue-hint: var(--blue-hint);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-submit {
+    @apply w-full sm:w-32 py-2 px-6 bg-[#0095FF] text-white font-medium rounded transition-all duration-200 active:scale-[0.98] text-base;
+  }
+
+  .option-card {
+    @apply flex items-center gap-2 py-1.5 cursor-pointer transition-all duration-200;
+  }
+
+  .radio-circle {
+    @apply w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center transition-colors bg-white;
+  }
+
+  .radio-circle.active {
+    @apply border-primary;
+  }
+
+  .radio-dot {
+    @apply w-2 h-2 rounded-full bg-primary;
+  }
+
+  .check-box {
+    @apply w-4 h-4 rounded border border-gray-400 flex items-center justify-center transition-colors bg-white;
+  }
+
+  .check-box.active {
+    @apply border-[#E5E5E5] bg-[#F5F5F5];
+  }
+
+  .check-box-inner {
+    @apply w-2 h-2 bg-[#999999] rounded-sm;
+  }
+
+  .field-input,
+  .field-select,
+  .field-textarea {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-sm focus:outline-none focus:border-red-500 transition-all bg-white text-gray-800 text-sm;
+  }
+
+  .upload-area {
+    @apply border border-dashed border-gray-300 rounded p-12 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all hover:bg-gray-50;
+  }
+
+  .char-count {
+    @apply text-xs text-gray-400 mt-1;
+  }
+
+  .hint-text {
+    @apply text-blue-hint italic text-sm mt-2 mb-3 block;
+  }
+
+  .asterisk {
+    @apply text-primary text-lg font-bold;
+  }
+
+  .question-title {
+    @apply text-base font-semibold text-[#333333];
+  }
 }
